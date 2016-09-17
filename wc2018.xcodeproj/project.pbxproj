@@ -97,6 +97,7 @@
 				7F455C781D8D67E900DCECA0 /* Info.plist */,
 				7F455C701D8D67E900DCECA0 /* wc2018.xcdatamodeld */,
 				7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */,
+				7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */,
 			);
 			path = wc2018;
 			sourceTree = "<group>";
@@ -104,7 +105,6 @@
 		7F455C9A1D8D93CE00DCECA0 /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
-				7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */,
 				7F455C7E1D8D93BE00DCECA0 /* Game+CoreDataProperties.swift */,
 				7F455C7F1D8D93BE00DCECA0 /* Game.swift */,
 				7F455C801D8D93BE00DCECA0 /* Goal+CoreDataProperties.swift */,
