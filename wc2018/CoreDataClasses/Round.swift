@@ -11,7 +11,6 @@ import CoreData
 
 
 class Round: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    convenience init(){
+        self.init(entity: CoreDataManager.instance.entityForName("Round"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)    }
 }

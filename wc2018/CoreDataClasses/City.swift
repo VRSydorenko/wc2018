@@ -11,7 +11,7 @@ import CoreData
 
 
 class City: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    convenience init(){
+        self.init(entity: CoreDataManager.instance.entityForName("City"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)
+    }
 }

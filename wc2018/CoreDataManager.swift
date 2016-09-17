@@ -76,4 +76,9 @@ class CoreDataManager {
             }
         }
     }
+    
+    // Entity for Name
+    func entityForName(entityName: String) -> NSEntityDescription {
+        return NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.managedObjectContext)!
+    }
 }

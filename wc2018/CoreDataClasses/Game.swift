@@ -11,7 +11,7 @@ import CoreData
 
 
 class Game: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+    convenience init(){
+        self.init(entity: CoreDataManager.instance.entityForName("Game"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)
+    }
 }
