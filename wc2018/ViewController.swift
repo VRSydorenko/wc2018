@@ -23,6 +23,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return controller
     }()
+    
+    var dataVersion: Int {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey("dataVersion") as? Int {
+                return returnValue
+            }
+            return 0
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "dataVersion")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
 
     
     override func viewDidLoad() {
