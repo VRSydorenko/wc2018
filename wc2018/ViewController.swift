@@ -9,19 +9,24 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate {
 
+    // MARK: outlets
     @IBOutlet weak var tableData: UITableView!
     
+    // MARK: variables
     let cellReuseIdentifier: String = "cellGame"
+    var parsingInProgress: Bool = false
+    var ignoreCurrentElement: Bool = false
+    var currentDataVersion: Int = 0
+    let xmlUpdateElement: String = "update"
+    let xmlUpdateElementAttrVersion = "version"
     
-    var gamesByGroup:NSFetchedResultsController = {
-        let request = NSFetchRequest(entityName: "Game")
-        let sorting = NSSortDescriptor(key: "date", ascending: true)
-        request.sortDescriptors = [sorting]
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: "group", cacheName: nil)
-        
-        return controller
+    let gamesByGroup = CoreDataManager.instance.fetchedResultsController("Game", sorting: "date", grouping: "group")
+    
+    var cities:NSFetchedResultsController = {
+        let request = NSFetchRequest(entityName: "City")
+        return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext,sectionNameKeyPath: nil, cacheName: nil)
     }()
     
     var dataVersion: Int {
@@ -36,7 +41,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
-
+    
+    // MARK: methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +82,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // method to run when table view cell is tapped
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("You tapped cell number \(indexPath.row).")
+    }
+    
+    // MARK: xml parsing
+    func parserDidStartDocument(parser: NSXMLParser) {
+        parsingInProgress = true
+    }
+    
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        // is it an update element
+        if elementName == xmlUpdateElement {
+            let updateVersion: Int? = Int(attributeDict[xmlUpdateElementAttrVersion]!)!
+            if updateVersion <= currentDataVersion {
+                ignoreCurrentElement = true
+                return
+            }
+        }
+        
+        // other element in an update
+        if ignoreCurrentElement {
+            return
+        }
+        
+        
+    }
+    
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        if ignoreCurrentElement {
+            return
+        }
+    }
+    
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == xmlUpdateElement {
+            ignoreCurrentElement = false
+        }
+    }
+    
+    func parserDidEndDocument(parser: NSXMLParser) {
+        ignoreCurrentElement = false
+        dataVersion = currentDataVersion
+        parsingInProgress = false
     }
 }
 

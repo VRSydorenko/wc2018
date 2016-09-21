@@ -21,13 +21,16 @@ class CoreDataManager {
         return NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.managedObjectContext)!
     }
     
-    // Fetched Results Controller for Entity Name
-    func fetchedResultsController(entityName: String, keyForSort: String) -> NSFetchedResultsController {
-        let fetchRequest = NSFetchRequest(entityName: entityName)
-        let sortDescriptor = NSSortDescriptor(key: keyForSort, ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultsController
+    func fetchedResultsController(entity: String, sorting:String?, grouping:String?) -> NSFetchedResultsController
+    {
+        let request = NSFetchRequest(entityName: entity)
+        if sorting != nil {
+            let sort = NSSortDescriptor(key: sorting, ascending: true)
+            request.sortDescriptors = [sort]
+        }
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: grouping, cacheName: nil)
+        
+        return controller
     }
     
     // MARK: - Core Data stack
