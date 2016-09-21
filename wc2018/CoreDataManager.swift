@@ -21,16 +21,22 @@ class CoreDataManager {
         return NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.managedObjectContext)!
     }
     
-    func fetchedResultsController(entity: String, sorting:String?, grouping:String?) -> NSFetchedResultsController
+    func fetchedResultsController(entity: String, predicate: NSPredicate?, sorting:String?, grouping:String?) -> NSFetchedResultsController
     {
         let request = NSFetchRequest(entityName: entity)
-        if sorting != nil {
-            let sort = NSSortDescriptor(key: sorting, ascending: true)
-            request.sortDescriptors = [sort]
-        }
+        let sort = NSSortDescriptor(key: sorting, ascending: true)
+        request.sortDescriptors = [sort]
+        request.predicate = predicate
+
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: grouping, cacheName: nil)
         
         return controller
+    }
+    
+    func fetchedResultsController(entity: String, id: Int) -> NSFetchedResultsController
+    {
+        let predicate: NSPredicate? = NSPredicate(format: "id == %@", argumentArray: [id])
+        return CoreDataManager.instance.fetchedResultsController(entity, predicate: predicate, sorting: nil, grouping: nil)
     }
     
     // MARK: - Core Data stack

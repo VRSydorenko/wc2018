@@ -22,12 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let xmlUpdateElement: String = "update"
     let xmlUpdateElementAttrVersion = "version"
     
-    let gamesByGroup = CoreDataManager.instance.fetchedResultsController("Game", sorting: "date", grouping: "group")
-    
-    var cities:NSFetchedResultsController = {
-        let request = NSFetchRequest(entityName: "City")
-        return NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext,sectionNameKeyPath: nil, cacheName: nil)
-    }()
+    let gamesByGroup = CoreDataManager.instance.fetchedResultsController("Game", predicate: nil, sorting: "date", grouping: "group")
     
     var dataVersion: Int {
         get {
@@ -54,11 +49,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if gamesByGroup.sections?.count > 0 {
             return gamesByGroup.sections![section].numberOfObjects
@@ -69,8 +59,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let game = gamesByGroup.objectAtIndexPath(indexPath) as! Game
-        let teamA = game.teamA as! Team
-        let teamB = game.teamB as! Team
+        let teamA = game.teamA! as Team
+        let teamB = game.teamB! as Team
         
         let cell:CellGame = self.tableData.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CellGame!
         cell.labelTeamA.text = teamA.name
@@ -90,7 +80,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        // is it an update element
+        // is it an update element?
         if elementName == xmlUpdateElement {
             let updateVersion: Int? = Int(attributeDict[xmlUpdateElementAttrVersion]!)!
             if updateVersion <= currentDataVersion {
@@ -104,7 +94,66 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         
-        
+        if let idValue = attributeDict["id"] {
+            let id : Int = Int(idValue)!
+            let objects = CoreDataManager.instance.fetchedResultsController(elementName, id: id)
+            
+            do{
+                try objects.performFetch()
+            } catch {
+                print(error)
+            }
+            
+            var object : NSManagedObject?
+            
+            // existing entity
+            if objects.fetchedObjects!.count > 0 {
+                let obj = objects.objectAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))
+                switch elementName {
+                case "Country":
+                    object = obj as? Country
+                case "Game":
+                    object = obj as? Game
+                case "Goal":
+                    object = obj as? Goal
+                case "Round":
+                    object = obj as? Round
+                case "City":
+                    object = obj as? City
+                case "GameState":
+                    object = obj as? GameState
+                case "Team":
+                    object = obj as? Team
+                default: break
+                }
+            }
+            // need to add a new entity
+            else{
+                switch elementName {
+                case "Country":
+                    object = Country()
+                case "Game":
+                    object = Game()
+                case "Goal":
+                    object = Goal()
+                case "Round":
+                    object = Round()
+                case "City":
+                    object = City()
+                case "GameState":
+                    object = GameState()
+                case "Team":
+                    object = Team()
+                default: break
+                }
+            }
+            
+            // set object values and save
+            if let object = object {
+                object.setValuesForKeysWithDictionary(attributeDict)
+                CoreDataManager.instance.saveContext()
+            }
+        }
     }
     
     func parser(parser: NSXMLParser, foundCharacters string: String) {
