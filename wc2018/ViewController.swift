@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let xmlUpdateElementAttrVersion = "version"
     
     let gamesByGroup = CoreDataManager.instance.fetchedResultsController("Game", predicate: nil, sorting: "date", grouping: "group")
+    let countries = CoreDataManager.instance.fetchedResultsController("Country", predicate: nil, sorting: "name", grouping: nil)
     
     var dataVersion: Int {
         get {
@@ -37,34 +38,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    var parser : NSXMLParser?
+    
     // MARK: methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         do{
-            try gamesByGroup.performFetch()
+            //try gamesByGroup.performFetch()
+            try countries.performFetch()
         } catch {
             print(error)
         }
+        
+        let url = NSURL(string: "https://dl.dropboxusercontent.com/s/m02s7944bcdytiq/wc2018.xml")
+        parser = NSXMLParser(contentsOfURL: url!)
+        parser!.delegate = self
+        parser!.parse()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if gamesByGroup.sections?.count > 0 {
+        /*if gamesByGroup.sections?.count > 0 {
             return gamesByGroup.sections![section].numberOfObjects
+        }*/
+        if countries.sections?.count > 0 {
+            return countries.sections![section].numberOfObjects
         }
         
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let game = gamesByGroup.objectAtIndexPath(indexPath) as! Game
+        /*let game = gamesByGroup.objectAtIndexPath(indexPath) as! Game
         let teamA = game.teamA! as Team
         let teamB = game.teamB! as Team
         
         let cell:CellGame = self.tableData.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CellGame!
         cell.labelTeamA.text = teamA.name
-        cell.labelTeamB.text = teamB.name
+        cell.labelTeamB.text = teamB.name*/
+        
+        let country = countries.objectAtIndexPath(indexPath) as! Country
+         
+        let cell:CellGame = self.tableData.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CellGame!
+        cell.labelTeamA.text = country.name
         
         return cell
     }
@@ -85,8 +102,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let updateVersion: Int? = Int(attributeDict[xmlUpdateElementAttrVersion]!)!
             if updateVersion <= currentDataVersion {
                 ignoreCurrentElement = true
-                return
             }
+            return
         }
         
         // other element in an update

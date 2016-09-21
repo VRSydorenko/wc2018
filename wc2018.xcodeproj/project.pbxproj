@@ -29,6 +29,7 @@
 		7F61EBE11D931A6500D28FAB /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBDA1D931A6500D28FAB /* City+CoreDataProperties.swift */; };
 		7F61EBE21D931A6500D28FAB /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBDB1D931A6500D28FAB /* Goal+CoreDataProperties.swift */; };
 		7F61EBE31D931A6500D28FAB /* GameState+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBDC1D931A6500D28FAB /* GameState+CoreDataProperties.swift */; };
+		7F61EBE91D932DDC00D28FAB /* wc2018.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F61EBE81D932DDC00D28FAB /* wc2018.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		7F61EBDA1D931A6500D28FAB /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "City+CoreDataProperties.swift"; path = "CoreDataClasses/City+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F61EBDB1D931A6500D28FAB /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataProperties.swift"; path = "CoreDataClasses/Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F61EBDC1D931A6500D28FAB /* GameState+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameState+CoreDataProperties.swift"; path = "CoreDataClasses/GameState+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7F61EBE81D932DDC00D28FAB /* wc2018.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = wc2018.xml; path = ../../../../Desktop/wc2018.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		7F455C681D8D67E800DCECA0 /* wc2018 */ = {
 			isa = PBXGroup;
 			children = (
+				7F61EBE81D932DDC00D28FAB /* wc2018.xml */,
 				7F455C9A1D8D93CE00DCECA0 /* CoreDataClasses */,
 				7F455C691D8D67E800DCECA0 /* AppDelegate.swift */,
 				7F455C6B1D8D67E800DCECA0 /* ViewController.swift */,
@@ -184,6 +187,7 @@
 			files = (
 				7F455C771D8D67E900DCECA0 /* LaunchScreen.storyboard in Resources */,
 				7F455C741D8D67E900DCECA0 /* Assets.xcassets in Resources */,
+				7F61EBE91D932DDC00D28FAB /* wc2018.xml in Resources */,
 				7F455C6F1D8D67E900DCECA0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

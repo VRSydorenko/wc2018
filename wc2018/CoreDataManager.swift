@@ -26,8 +26,9 @@ class CoreDataManager {
         let request = NSFetchRequest(entityName: entity)
         let sort = NSSortDescriptor(key: sorting, ascending: true)
         request.sortDescriptors = [sort]
-        request.predicate = predicate
-
+        if predicate != nil{
+            request.predicate = predicate
+        }
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: grouping, cacheName: nil)
         
         return controller
@@ -36,7 +37,7 @@ class CoreDataManager {
     func fetchedResultsController(entity: String, id: Int) -> NSFetchedResultsController
     {
         let predicate: NSPredicate? = NSPredicate(format: "id == %@", argumentArray: [id])
-        return CoreDataManager.instance.fetchedResultsController(entity, predicate: predicate, sorting: nil, grouping: nil)
+        return CoreDataManager.instance.fetchedResultsController(entity, predicate: predicate, sorting: "id", grouping: nil)
     }
     
     // MARK: - Core Data stack
