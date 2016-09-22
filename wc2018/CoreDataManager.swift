@@ -16,6 +16,48 @@ class CoreDataManager {
     
     // MARK: methods
     
+    func castOrCreate(entityName: String, object: AnyObject?, inout entity: ManagedObjectBase?){
+        if object != nil {
+            switch entityName {
+            case "Country":
+                entity = object as? Country
+            case "Game":
+                entity = object as? Game
+            case "Goal":
+                entity = object as? Goal
+            case "Round":
+                entity = object as? Round
+            case "City":
+                entity = object as? City
+            case "GameState":
+                entity = object as? GameState
+            case "Team":
+                entity = object as? Team
+            default: break
+            }
+        }
+        else
+        {
+            switch entityName {
+            case "Country":
+                entity = Country()
+            case "Game":
+                entity = Game()
+            case "Goal":
+                entity = Goal()
+            case "Round":
+                entity = Round()
+            case "City":
+                entity = City()
+            case "GameState":
+                entity = GameState()
+            case "Team":
+                entity = Team()
+            default: break
+            }
+        }
+    }
+    
     // Entity for Name
     func entityForName(entityName: String) -> NSEntityDescription {
         return NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.managedObjectContext)!
@@ -86,8 +128,6 @@ class CoreDataManager {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
-    
-    // MARK: - Core Data Saving support
     
     func saveContext () {
         if managedObjectContext.hasChanges {

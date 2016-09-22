@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: variables
     let cellReuseIdentifier: String = "cellGame"
     var parsingInProgress: Bool = false
-    var ignoreCurrentElement: Bool = false
+    var ignoreCurrentUpdate: Bool = false
     var currentUpdateDataVersion: Int = 0
     let xmlUpdateElement: String = "update"
     let xmlUpdateElementAttrVersion = "version"
@@ -91,23 +91,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("You tapped cell number \(indexPath.row).")
     }
     
-    // MARK: xml parsing
     func parserDidStartDocument(parser: NSXMLParser) {
         parsingInProgress = true
     }
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        // is it an update element?
+        // an update element?
         if elementName == xmlUpdateElement {
             let updateVersion: Int? = Int(attributeDict[xmlUpdateElementAttrVersion]!)!
             if updateVersion <= currentUpdateDataVersion {
-                ignoreCurrentElement = true
+                ignoreCurrentUpdate = true
             }
             return
         }
         
         // other element in an update
-        if ignoreCurrentElement {
+        if ignoreCurrentUpdate {
             return
         }
         
@@ -123,48 +122,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             var object : ManagedObjectBase?
             
-            // existing entity
+            var entityObject: AnyObject? = nil
+            
             if objects.fetchedObjects!.count > 0 {
-                let obj = objects.objectAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))
-                switch elementName {
-                case "Country":
-                    object = obj as? Country
-                case "Game":
-                    object = obj as? Game
-                case "Goal":
-                    object = obj as? Goal
-                case "Round":
-                    object = obj as? Round
-                case "City":
-                    object = obj as? City
-                case "GameState":
-                    object = obj as? GameState
-                case "Team":
-                    object = obj as? Team
-                default: break
-                }
-            }
-            // need to add a new entity
-            else{
-                switch elementName {
-                case "Country":
-                    object = Country()
-                case "Game":
-                    object = Game()
-                case "Goal":
-                    object = Goal()
-                case "Round":
-                    object = Round()
-                case "City":
-                    object = City()
-                case "GameState":
-                    object = GameState()
-                case "Team":
-                    object = Team()
-                default: break
-                }
+                entityObject = objects.objectAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))
             }
             
+            CoreDataManager.instance.castOrCreate(elementName, object: entityObject, entity: &object)
+                
             // set object values and save
             if let object = object {
                 object.setValuesFromDictionary(attributeDict)
@@ -176,7 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == xmlUpdateElement {
             dataVersion = currentUpdateDataVersion
-            ignoreCurrentElement = false
+            ignoreCurrentUpdate = false
         }
     }
     
