@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let cellReuseIdentifier: String = "cellGame"
     var parsingInProgress: Bool = false
     var ignoreCurrentElement: Bool = false
-    var currentDataVersion: Int = 0
+    var currentUpdateDataVersion: Int = 0
     let xmlUpdateElement: String = "update"
     let xmlUpdateElementAttrVersion = "version"
     
@@ -100,7 +100,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // is it an update element?
         if elementName == xmlUpdateElement {
             let updateVersion: Int? = Int(attributeDict[xmlUpdateElementAttrVersion]!)!
-            if updateVersion <= currentDataVersion {
+            if updateVersion <= currentUpdateDataVersion {
                 ignoreCurrentElement = true
             }
             return
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(error)
             }
             
-            var object : NSManagedObject?
+            var object : ManagedObjectBase?
             
             // existing entity
             if objects.fetchedObjects!.count > 0 {
@@ -167,27 +167,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // set object values and save
             if let object = object {
-                object.setValuesForKeysWithDictionary(attributeDict)
+                object.setValuesFromDictionary(attributeDict)
                 CoreDataManager.instance.saveContext()
             }
         }
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
-        if ignoreCurrentElement {
-            return
-        }
-    }
-    
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == xmlUpdateElement {
+            dataVersion = currentUpdateDataVersion
             ignoreCurrentElement = false
         }
     }
     
     func parserDidEndDocument(parser: NSXMLParser) {
-        ignoreCurrentElement = false
-        dataVersion = currentDataVersion
         parsingInProgress = false
     }
 }

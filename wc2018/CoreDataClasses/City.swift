@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class City: NSManagedObject {
+class City: ManagedObjectBase {
     convenience init(){
         self.init(entity: CoreDataManager.instance.entityForName("City"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)
     }

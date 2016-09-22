@@ -9,8 +9,7 @@
 import Foundation
 import CoreData
 
-
-class Team: NSManagedObject {
+class Team: ManagedObjectBase {
     convenience init(){
         self.init(entity: CoreDataManager.instance.entityForName("Team"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)
     }
