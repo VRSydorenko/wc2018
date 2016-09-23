@@ -18,6 +18,7 @@ class CoreDataManager {
     
     func castOrCreate(entityName: String, object: AnyObject?, inout entity: ManagedObjectBase?){
         if object != nil {
+            print("Casting to \(entityName)..")
             switch entityName {
             case "Country":
                 entity = object as? Country
@@ -33,11 +34,13 @@ class CoreDataManager {
                 entity = object as? GameState
             case "Team":
                 entity = object as? Team
-            default: break
+            default:
+                print("ERROR!!! Unexpected entity type: \(entityName)")
             }
         }
         else
         {
+            print("Creating new \(entityName)..")
             switch entityName {
             case "Country":
                 entity = Country()
@@ -53,7 +56,8 @@ class CoreDataManager {
                 entity = GameState()
             case "Team":
                 entity = Team()
-            default: break
+            default:
+                print("ERROR!!! Unexpected entity type: \(entityName)")
             }
         }
     }
@@ -71,6 +75,7 @@ class CoreDataManager {
         if predicate != nil{
             request.predicate = predicate
         }
+        print("Creting fetch controller for \(entity) (predicate: \(predicate), sort: \(sorting), group: \(grouping))...")
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: grouping, cacheName: nil)
         
         return controller
@@ -78,6 +83,7 @@ class CoreDataManager {
     
     func fetchedResultsController(entity: String, id: Int) -> NSFetchedResultsController
     {
+        print("Will create fetched results controller for entity: \"\(entity)\" with id: \(id)...")
         let predicate: NSPredicate? = NSPredicate(format: "id == %@", argumentArray: [id])
         return CoreDataManager.instance.fetchedResultsController(entity, predicate: predicate, sorting: "id", grouping: nil)
     }

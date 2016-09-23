@@ -21,13 +21,20 @@ class ManagedObjectBase : NSManagedObject{
         case "id":
             if let id = Int(value) {
                 super.setValue((id as AnyObject), forKey: key)
+                print("Setting [id] to <\(id)>")
+            } else {
+                print("Error casting <\(value)> to Int [id]!")
             }
         case "date":
             let formatter = NSDateFormatter()
             if let date = formatter.dateFromString(value) {
                 super.setValue((date as AnyObject), forKey: key)
+                print("Setting [date] to <\(date)>")
+            } else {
+                print("Error formatting <\(value)> into Date [date]!")
             }
         default:
+            print("Setting [\(key)] to <\(value)>")
             setValue(value, forKey: key)
         }
     }
