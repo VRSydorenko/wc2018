@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F22ADB91D8DD53300FEB8C4 /* cellGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */; };
+		7F42F8141D95C8BF009782DE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F42F8131D95C8BF009782DE /* UserSettings.swift */; };
 		7F455C6A1D8D67E800DCECA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C691D8D67E800DCECA0 /* AppDelegate.swift */; };
 		7F455C6C1D8D67E800DCECA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C6B1D8D67E800DCECA0 /* ViewController.swift */; };
 		7F455C6F1D8D67E900DCECA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F455C6D1D8D67E900DCECA0 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellGame.swift; sourceTree = "<group>"; };
+		7F42F8131D95C8BF009782DE /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		7F455C661D8D67E800DCECA0 /* wc2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wc2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F455C691D8D67E800DCECA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F455C6B1D8D67E800DCECA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				7F455C701D8D67E900DCECA0 /* wc2018.xcdatamodeld */,
 				7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */,
 				7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */,
+				7F42F8131D95C8BF009782DE /* UserSettings.swift */,
 			);
 			path = wc2018;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				7F61EBDD1D931A6500D28FAB /* Game+CoreDataProperties.swift in Sources */,
 				7F61EBDE1D931A6500D28FAB /* Round+CoreDataProperties.swift in Sources */,
 				7F455C951D8D93BE00DCECA0 /* GameState.swift in Sources */,
+				7F42F8141D95C8BF009782DE /* UserSettings.swift in Sources */,
 				7F61EBE01D931A6500D28FAB /* Country+CoreDataProperties.swift in Sources */,
 				7F53A91C1D946B1F0061CCBE /* ManagedObjectBase.swift in Sources */,
 				7F455C911D8D93BE00DCECA0 /* Round.swift in Sources */,

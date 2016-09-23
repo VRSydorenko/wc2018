@@ -10,78 +10,56 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSXMLParserDelegate {
-
+    
     // MARK: outlets
     @IBOutlet weak var tableData: UITableView!
     
     // MARK: variables
     let cellReuseIdentifier: String = "cellGame"
+    var parser = NSXMLParser(contentsOfURL: NSURL(string: "https://dl.dropboxusercontent.com/s/m02s7944bcdytiq/wc2018.xml")!)!
     var parsingInProgress: Bool = false
     var ignoreCurrentUpdate: Bool = false
     var currentUpdateDataVersion: Int = 0
     let xmlUpdateElement: String = "update"
     let xmlUpdateElementAttrVersion = "version"
     
-    let gamesByGroup = CoreDataManager.instance.fetchedResultsController("Game", predicate: nil, sorting: "date", grouping: "group")
-    let countries = CoreDataManager.instance.fetchedResultsController("Country", predicate: nil, sorting: "name", grouping: nil)
+    let games = CoreDataManager.instance.fetchedResultsController("Game", predicate: nil, sorting: "date", grouping: "group")
     
-    var dataVersion: Int {
+    var data: NSFetchedResultsController {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey("dataVersion") as? Int {
-                return returnValue
+            switch UserSettings.displayMode {
+            case .rounds:
+                return games
             }
-            return 0
-        }
-        set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "dataVersion")
-            NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
-    
-    var parser : NSXMLParser?
     
     // MARK: methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do{
-            //try gamesByGroup.performFetch()
-            try countries.performFetch()
-        } catch {
-            print(error)
-        }
+        parser.delegate = self
         
-        let url = NSURL(string: "https://dl.dropboxusercontent.com/s/m02s7944bcdytiq/wc2018.xml")
-        parser = NSXMLParser(contentsOfURL: url!)
-        parser!.delegate = self
-        parser!.parse()
+        performDataUpdate()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         /*if gamesByGroup.sections?.count > 0 {
             return gamesByGroup.sections![section].numberOfObjects
         }*/
-        if countries.sections?.count > 0 {
-            return countries.sections![section].numberOfObjects
-        }
         
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        /*let game = gamesByGroup.objectAtIndexPath(indexPath) as! Game
+        let game = games.objectAtIndexPath(indexPath) as! Game
         let teamA = game.teamA! as Team
         let teamB = game.teamB! as Team
         
         let cell:CellGame = self.tableData.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CellGame!
         cell.labelTeamA.text = teamA.name
-        cell.labelTeamB.text = teamB.name*/
-        
-        let country = countries.objectAtIndexPath(indexPath) as! Country
-         
-        let cell:CellGame = self.tableData.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! CellGame!
-        cell.labelTeamA.text = country.name
+        cell.labelTeamB.text = teamB.name
         
         return cell
     }
@@ -102,11 +80,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // an update element?
         if elementName == xmlUpdateElement {
             currentUpdateDataVersion = Int(attributeDict[xmlUpdateElementAttrVersion]!)!
-            if currentUpdateDataVersion <= dataVersion {
-                print("Update will be ignored! Update version <\(currentUpdateDataVersion)> is less than current data version <\(dataVersion)>")
+            if currentUpdateDataVersion <= UserSettings.dataVersion {
+                print("Update will be ignored! Update version <\(currentUpdateDataVersion)> is less than current data version <\(UserSettings.dataVersion)>")
                 ignoreCurrentUpdate = true
             } else {
-                print("Update will apply! Update version <\(currentUpdateDataVersion)> is greater than current data version <\(dataVersion)>")
+                print("Update will apply! Update version <\(currentUpdateDataVersion)> is greater than current data version <\(UserSettings.dataVersion)>")
             }
             return
         }
@@ -160,8 +138,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == xmlUpdateElement {
             if !ignoreCurrentUpdate {
-                print("Updating app data version (\(dataVersion)) to <\(currentUpdateDataVersion)>")
-                dataVersion = currentUpdateDataVersion
+                print("Updating app data version (\(UserSettings.dataVersion)) to <\(currentUpdateDataVersion)>")
+                UserSettings.dataVersion = currentUpdateDataVersion
             }
             
             ignoreCurrentUpdate = false
@@ -172,6 +150,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func parserDidEndDocument(parser: NSXMLParser) {
         parsingInProgress = false
         print("END document")
+    }
+    
+    func performDataUpdate(){
+        if parser.parse(){
+            print("Parsing succeeded!")
+            updateTable()
+        } else {
+            print("Parsing failed!")
+        }
+    }
+    
+    func updateTable(){
+        do{
+            print("Fetching data..")
+            try data.performFetch()
+        } catch {
+            print(error)
+        }
+        
+        print("Table update..")
+        tableData.reloadData()
     }
 }
 
