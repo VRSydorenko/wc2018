@@ -12,6 +12,11 @@ enum DisplayMode : Int {
     case rounds = 1
 }
 
+enum TournamentMode {
+    case National
+    case International
+}
+
 class UserSettings {
     static var dataVersion: Int {
         get {
@@ -51,4 +56,9 @@ class UserSettings {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
+    
+    static let tournamentMode : TournamentMode = .National
+    
+    static let dataUrl = NSURL(string: "https://dl.dropboxusercontent.com/s/m02s7944bcdytiq/wc2018.xml")
+    
 }

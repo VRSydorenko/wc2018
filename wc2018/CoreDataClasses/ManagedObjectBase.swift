@@ -25,13 +25,32 @@ class ManagedObjectBase : NSManagedObject{
             } else {
                 print("Error casting <\(value)> to Int [id]!")
             }
-        case "date":
+        case "date", "begin", "end":
             let formatter = NSDateFormatter()
+            formatter.dateFormat = "dd.MM.yyyy"
             if let date = formatter.dateFromString(value) {
                 super.setValue((date as AnyObject), forKey: key)
                 print("Setting [date] to <\(date)>")
             } else {
                 print("Error formatting <\(value)> into Date [date]!")
+            }
+        case "country":
+            if let id = Int(value) {
+                if let country = CoreDataManager.instance.entityObjectById("Country", id: id) {
+                    super.setValue(country as AnyObject, forKey: key)
+                    print("Setting [country] to a Country object with id <\(id)>")
+                }
+            } else {
+                print("Error casting Country id <\(value)> to Int [id]!")
+            }
+        case "city":
+            if let id = Int(value) {
+                if let city = CoreDataManager.instance.entityObjectById("City", id: id) {
+                    super.setValue(city as AnyObject, forKey: key)
+                    print("Setting [city] to a City object with id <\(id)>")
+                }
+            } else {
+                print("Error casting City id <\(value)> to Int [id]!")
             }
         default:
             print("Setting [\(key)] to <\(value)>")

@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: variables
     let cellReuseIdentifier: String = "cellGame"
-    var parser = NSXMLParser(contentsOfURL: NSURL(string: "https://dl.dropboxusercontent.com/s/m02s7944bcdytiq/wc2018.xml")!)!
+    var parser = NSXMLParser(contentsOfURL: UserSettings.dataUrl!)!
     var parsingInProgress: Bool = false
     var ignoreCurrentUpdate: Bool = false
     var currentUpdateDataVersion: Int = 0

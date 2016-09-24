@@ -75,7 +75,7 @@ class CoreDataManager {
         if predicate != nil{
             request.predicate = predicate
         }
-        print("Creting fetch controller for \(entity) (predicate: \(predicate), sort: \(sorting), group: \(grouping))...")
+        print("Creating fetch controller for \(entity) (predicate: \(predicate), sort: \(sorting), group: \(grouping))...")
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.instance.managedObjectContext, sectionNameKeyPath: grouping, cacheName: nil)
         
         return controller
@@ -86,6 +86,18 @@ class CoreDataManager {
         print("Will create fetched results controller for entity: \"\(entity)\" with id: \(id)...")
         let predicate: NSPredicate? = NSPredicate(format: "id == %@", argumentArray: [id])
         return CoreDataManager.instance.fetchedResultsController(entity, predicate: predicate, sorting: "id", grouping: nil)
+    }
+    
+    func entityObjectById(entity: String, id: Int) -> NSManagedObject?
+    {
+        print("Will get entity \(entity) with id: \(id)...")
+        let controller = fetchedResultsController(entity, id: id)
+        do {
+            try controller.performFetch()
+        } catch {
+            print(error)
+        }
+        return controller.fetchedObjects?.first as! NSManagedObject?
     }
     
     // MARK: - Core Data stack
