@@ -24,14 +24,14 @@
 		7F455C991D8D93BE00DCECA0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C8B1D8D93BE00DCECA0 /* Team.swift */; };
 		7F455C9C1D8D94FE00DCECA0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */; };
 		7F53A91C1D946B1F0061CCBE /* ManagedObjectBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F53A91B1D946B1F0061CCBE /* ManagedObjectBase.swift */; };
-		7F61EBDD1D931A6500D28FAB /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBD61D931A6500D28FAB /* Game+CoreDataProperties.swift */; };
-		7F61EBDE1D931A6500D28FAB /* Round+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBD71D931A6500D28FAB /* Round+CoreDataProperties.swift */; };
-		7F61EBDF1D931A6500D28FAB /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBD81D931A6500D28FAB /* Team+CoreDataProperties.swift */; };
-		7F61EBE01D931A6500D28FAB /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBD91D931A6500D28FAB /* Country+CoreDataProperties.swift */; };
-		7F61EBE11D931A6500D28FAB /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBDA1D931A6500D28FAB /* City+CoreDataProperties.swift */; };
-		7F61EBE21D931A6500D28FAB /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBDB1D931A6500D28FAB /* Goal+CoreDataProperties.swift */; };
-		7F61EBE31D931A6500D28FAB /* GameState+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F61EBDC1D931A6500D28FAB /* GameState+CoreDataProperties.swift */; };
 		7F61EBE91D932DDC00D28FAB /* wc2018.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F61EBE81D932DDC00D28FAB /* wc2018.xml */; };
+		7FDA5C871D971C4500D78ADC /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C801D971C4500D78ADC /* City+CoreDataProperties.swift */; };
+		7FDA5C881D971C4500D78ADC /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C811D971C4500D78ADC /* Country+CoreDataProperties.swift */; };
+		7FDA5C891D971C4500D78ADC /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C821D971C4500D78ADC /* Game+CoreDataProperties.swift */; };
+		7FDA5C8A1D971C4500D78ADC /* GameState+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C831D971C4500D78ADC /* GameState+CoreDataProperties.swift */; };
+		7FDA5C8B1D971C4500D78ADC /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C841D971C4500D78ADC /* Goal+CoreDataProperties.swift */; };
+		7FDA5C8C1D971C4500D78ADC /* Round+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C851D971C4500D78ADC /* Round+CoreDataProperties.swift */; };
+		7FDA5C8D1D971C4500D78ADC /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C861D971C4500D78ADC /* Team+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,14 +54,14 @@
 		7F455C8B1D8D93BE00DCECA0 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Team.swift; path = CoreDataClasses/Team.swift; sourceTree = "<group>"; };
 		7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7F53A91B1D946B1F0061CCBE /* ManagedObjectBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectBase.swift; path = CoreDataClasses/ManagedObjectBase.swift; sourceTree = "<group>"; };
-		7F61EBD61D931A6500D28FAB /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Game+CoreDataProperties.swift"; path = "CoreDataClasses/Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F61EBD71D931A6500D28FAB /* Round+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Round+CoreDataProperties.swift"; path = "CoreDataClasses/Round+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F61EBD81D931A6500D28FAB /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Team+CoreDataProperties.swift"; path = "CoreDataClasses/Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F61EBD91D931A6500D28FAB /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Country+CoreDataProperties.swift"; path = "CoreDataClasses/Country+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F61EBDA1D931A6500D28FAB /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "City+CoreDataProperties.swift"; path = "CoreDataClasses/City+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F61EBDB1D931A6500D28FAB /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataProperties.swift"; path = "CoreDataClasses/Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7F61EBDC1D931A6500D28FAB /* GameState+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameState+CoreDataProperties.swift"; path = "CoreDataClasses/GameState+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F61EBE81D932DDC00D28FAB /* wc2018.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = wc2018.xml; path = ../../../../Desktop/wc2018.xml; sourceTree = "<group>"; };
+		7FDA5C801D971C4500D78ADC /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "City+CoreDataProperties.swift"; path = "CoreDataClasses/City+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDA5C811D971C4500D78ADC /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Country+CoreDataProperties.swift"; path = "CoreDataClasses/Country+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDA5C821D971C4500D78ADC /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Game+CoreDataProperties.swift"; path = "CoreDataClasses/Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDA5C831D971C4500D78ADC /* GameState+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameState+CoreDataProperties.swift"; path = "CoreDataClasses/GameState+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDA5C841D971C4500D78ADC /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataProperties.swift"; path = "CoreDataClasses/Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDA5C851D971C4500D78ADC /* Round+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Round+CoreDataProperties.swift"; path = "CoreDataClasses/Round+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7FDA5C861D971C4500D78ADC /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Team+CoreDataProperties.swift"; path = "CoreDataClasses/Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +113,13 @@
 		7F455C9A1D8D93CE00DCECA0 /* CoreDataClasses */ = {
 			isa = PBXGroup;
 			children = (
-				7F61EBD61D931A6500D28FAB /* Game+CoreDataProperties.swift */,
-				7F61EBD71D931A6500D28FAB /* Round+CoreDataProperties.swift */,
-				7F61EBD81D931A6500D28FAB /* Team+CoreDataProperties.swift */,
-				7F61EBD91D931A6500D28FAB /* Country+CoreDataProperties.swift */,
-				7F61EBDA1D931A6500D28FAB /* City+CoreDataProperties.swift */,
-				7F61EBDB1D931A6500D28FAB /* Goal+CoreDataProperties.swift */,
-				7F61EBDC1D931A6500D28FAB /* GameState+CoreDataProperties.swift */,
+				7FDA5C801D971C4500D78ADC /* City+CoreDataProperties.swift */,
+				7FDA5C811D971C4500D78ADC /* Country+CoreDataProperties.swift */,
+				7FDA5C821D971C4500D78ADC /* Game+CoreDataProperties.swift */,
+				7FDA5C831D971C4500D78ADC /* GameState+CoreDataProperties.swift */,
+				7FDA5C841D971C4500D78ADC /* Goal+CoreDataProperties.swift */,
+				7FDA5C851D971C4500D78ADC /* Round+CoreDataProperties.swift */,
+				7FDA5C861D971C4500D78ADC /* Team+CoreDataProperties.swift */,
 				7F455C7F1D8D93BE00DCECA0 /* Game.swift */,
 				7F455C811D8D93BE00DCECA0 /* Goal.swift */,
 				7F455C831D8D93BE00DCECA0 /* Round.swift */,
@@ -205,24 +205,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FDA5C8C1D971C4500D78ADC /* Round+CoreDataProperties.swift in Sources */,
 				7F455C6C1D8D67E800DCECA0 /* ViewController.swift in Sources */,
-				7F61EBDD1D931A6500D28FAB /* Game+CoreDataProperties.swift in Sources */,
-				7F61EBDE1D931A6500D28FAB /* Round+CoreDataProperties.swift in Sources */,
 				7F455C951D8D93BE00DCECA0 /* GameState.swift in Sources */,
+				7FDA5C8D1D971C4500D78ADC /* Team+CoreDataProperties.swift in Sources */,
 				7F42F8141D95C8BF009782DE /* UserSettings.swift in Sources */,
-				7F61EBE01D931A6500D28FAB /* Country+CoreDataProperties.swift in Sources */,
 				7F53A91C1D946B1F0061CCBE /* ManagedObjectBase.swift in Sources */,
+				7FDA5C881D971C4500D78ADC /* Country+CoreDataProperties.swift in Sources */,
+				7FDA5C8B1D971C4500D78ADC /* Goal+CoreDataProperties.swift in Sources */,
 				7F455C911D8D93BE00DCECA0 /* Round.swift in Sources */,
 				7F22ADB91D8DD53300FEB8C4 /* cellGame.swift in Sources */,
 				7F455C8D1D8D93BE00DCECA0 /* Game.swift in Sources */,
 				7F455C9C1D8D94FE00DCECA0 /* CoreDataManager.swift in Sources */,
-				7F61EBE11D931A6500D28FAB /* City+CoreDataProperties.swift in Sources */,
 				7F455C991D8D93BE00DCECA0 /* Team.swift in Sources */,
-				7F61EBDF1D931A6500D28FAB /* Team+CoreDataProperties.swift in Sources */,
 				7F455C931D8D93BE00DCECA0 /* City.swift in Sources */,
-				7F61EBE31D931A6500D28FAB /* GameState+CoreDataProperties.swift in Sources */,
+				7FDA5C871D971C4500D78ADC /* City+CoreDataProperties.swift in Sources */,
+				7FDA5C891D971C4500D78ADC /* Game+CoreDataProperties.swift in Sources */,
+				7FDA5C8A1D971C4500D78ADC /* GameState+CoreDataProperties.swift in Sources */,
 				7F455C721D8D67E900DCECA0 /* wc2018.xcdatamodeld in Sources */,
-				7F61EBE21D931A6500D28FAB /* Goal+CoreDataProperties.swift in Sources */,
 				7F455C6A1D8D67E800DCECA0 /* AppDelegate.swift in Sources */,
 				7F455C971D8D93BE00DCECA0 /* Country.swift in Sources */,
 				7F455C8F1D8D93BE00DCECA0 /* Goal.swift in Sources */,

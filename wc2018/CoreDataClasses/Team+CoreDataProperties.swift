@@ -2,7 +2,7 @@
 //  Team+CoreDataProperties.swift
 //  wc2018
 //
-//  Created by VRS on 21/09/16.
+//  Created by VRS on 24/09/16.
 //  Copyright © 2016 Viktor Sydorenko. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,5 +21,6 @@ extension Team {
     @NSManaged var goalsTo: Goal?
     @NSManaged var teamA: NSSet?
     @NSManaged var teamB: NSSet?
+    @NSManaged var city: City?
 
 }
