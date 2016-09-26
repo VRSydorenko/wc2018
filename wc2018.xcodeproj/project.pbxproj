@@ -24,6 +24,7 @@
 		7F455C991D8D93BE00DCECA0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C8B1D8D93BE00DCECA0 /* Team.swift */; };
 		7F455C9C1D8D94FE00DCECA0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */; };
 		7F53A91C1D946B1F0061CCBE /* ManagedObjectBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F53A91B1D946B1F0061CCBE /* ManagedObjectBase.swift */; };
+		7F5EBC291D99A3330053BB13 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5EBC281D99A3330053BB13 /* DataLoader.swift */; };
 		7F61EBE91D932DDC00D28FAB /* wc2018.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F61EBE81D932DDC00D28FAB /* wc2018.xml */; };
 		7FDA5CA51D973EB400D78ADC /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C9E1D973EB400D78ADC /* Goal+CoreDataProperties.swift */; };
 		7FDA5CA61D973EB400D78ADC /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA5C9F1D973EB400D78ADC /* Team+CoreDataProperties.swift */; };
@@ -54,6 +55,7 @@
 		7F455C8B1D8D93BE00DCECA0 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Team.swift; path = CoreDataClasses/Team.swift; sourceTree = "<group>"; };
 		7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7F53A91B1D946B1F0061CCBE /* ManagedObjectBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectBase.swift; path = CoreDataClasses/ManagedObjectBase.swift; sourceTree = "<group>"; };
+		7F5EBC281D99A3330053BB13 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		7F61EBE81D932DDC00D28FAB /* wc2018.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = wc2018.xml; path = ../../../../Desktop/wc2018.xml; sourceTree = "<group>"; };
 		7FDA5C9E1D973EB400D78ADC /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Goal+CoreDataProperties.swift"; path = "CoreDataClasses/Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7FDA5C9F1D973EB400D78ADC /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Team+CoreDataProperties.swift"; path = "CoreDataClasses/Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */,
 				7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */,
 				7F42F8131D95C8BF009782DE /* UserSettings.swift */,
+				7F5EBC281D99A3330053BB13 /* DataLoader.swift */,
 			);
 			path = wc2018;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F5EBC291D99A3330053BB13 /* DataLoader.swift in Sources */,
 				7FDA5CAA1D973EB400D78ADC /* City+CoreDataProperties.swift in Sources */,
 				7F455C6C1D8D67E800DCECA0 /* ViewController.swift in Sources */,
 				7F455C951D8D93BE00DCECA0 /* GameState.swift in Sources */,
