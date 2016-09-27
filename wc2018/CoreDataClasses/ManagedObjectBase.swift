@@ -26,9 +26,7 @@ class ManagedObjectBase : NSManagedObject{
                 print("Error casting <\(value)> to Int [id]!")
             }
         case "date", "begin", "end":
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "dd.MM.yyyy"
-            if let date = formatter.dateFromString(value) {
+            if let date = UserSettings.dateFormatter.dateFromString(value) {
                 super.setValue((date as AnyObject), forKey: key)
                 print("Setting [date] to <\(date)>")
             } else {

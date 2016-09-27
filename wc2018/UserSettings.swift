@@ -61,4 +61,12 @@ class UserSettings {
     
     static let dataUrl = NSURL(string: "https://dl.dropboxusercontent.com/s/m02s7944bcdytiq/wc2018.xml")
     
+    static var dateFormatter: NSDateFormatter {
+        get {
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "dd.MM.yyyy"
+            return formatter
+        }
+    }
+    
 }
