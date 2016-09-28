@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DataLoaderDelegate {
-    func UpdateCompleted(success: Bool)
+    func OnUpdateCompleted(success: Bool)
 }
 
 class DataLoader : NSObject, NSXMLParserDelegate {
@@ -134,6 +134,6 @@ class DataLoader : NSObject, NSXMLParserDelegate {
             print(parser.parserError)
         }
         
-        delegate?.UpdateCompleted(parser.parserError == nil)
+        delegate?.OnUpdateCompleted(parser.parserError == nil)
     }
 }

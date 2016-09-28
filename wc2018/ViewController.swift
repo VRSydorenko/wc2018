@@ -31,16 +31,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    var predCurrentRound : NSPredicate {
-        get {
-            let datePredicate = NSPredicate(format: "end >= %@", NSDate())
-            return datePredicate
-        }
-    }
-    
     var currentRound: Round? {
         get {
-            rounds.fetchRequest.predicate = predCurrentRound
+            rounds.fetchRequest.predicate = NSPredicate(format: "end >= %@", NSDate())
             do {
                 try rounds.performFetch()
                 if rounds.fetchedObjects?.count > 0 {
@@ -69,6 +62,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         updater.delegate = self
         updater.startUpdate()
     }
+    
+    func getPrevRound(forRound: Round?) -> Round? {
+        if forRound == nil {
+            return nil
+        }
+        
+        rounds.fetchRequest.predicate = NSPredicate(format: "end < %@", forRound!.beginDate)
+        do {
+            try rounds.performFetch()
+            if rounds.fetchedObjects?.count > 0 {
+                return rounds.fetchedObjects?.last as! Round!
+            }
+        } catch {
+            print(error)
+        }
+        
+        return nil
+    }
+    
+    func getNextRound(forRound: Round?) -> Round? {
+        if forRound == nil {
+            return nil
+        }
+        
+        rounds.fetchRequest.predicate = NSPredicate(format: "begin > %@", forRound!.endDate)
+        do {
+            try rounds.performFetch()
+            if rounds.fetchedObjects?.count > 0 {
+                return rounds.fetchedObjects?.first as! Round!
+            }
+        } catch {
+            print(error)
+        }
+        
+        return nil
+    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if data.sections?.count > 0 {
@@ -94,18 +123,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("You tapped cell number \(indexPath.row).")
     }
     
-    func UpdateCompleted(success: Bool) {
+    func OnUpdateCompleted(success: Bool) {
         updateTable()
     }
     
     func updateTable(){
         updateRequests()
+        
+        naviCurrent.title = currentRound?.name
+        naviPrev.title = getPrevRound(currentRound)?.name
+        naviFwd.title = getNextRound(currentRound)?.name
+
         do{
             print("Fetching data..")
-            try rounds.performFetch()
             try data.performFetch()
-            
-            naviCurrent.title = currentRound?.name
         } catch {
             print(error)
         }
