@@ -24,13 +24,21 @@
                                     <constraint firstAttribute="height" constant="44" id="pPv-tl-Gno"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" id="TYW-0I-sd8"/>
+                                    <barButtonItem title="Item" id="TYW-0I-sd8">
+                                        <connections>
+                                            <action selector="OnNaviPrevRoundPressed:" destination="BYZ-38-t0r" id="Gk8-yi-07K"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="3YD-N8-XLm"/>
                                     <barButtonItem enabled="NO" title="Title" style="plain" id="mvf-Jd-N9d">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bxn-NI-anb"/>
-                                    <barButtonItem title="Item" id="D45-L4-IHE"/>
+                                    <barButtonItem title="Item" id="D45-L4-IHE">
+                                        <connections>
+                                            <action selector="OnNaviNextRoundPressed:" destination="BYZ-38-t0r" id="e12-yg-fkg"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1yB-cY-Ygg">

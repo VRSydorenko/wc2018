@@ -33,19 +33,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var currentRound: Round? {
         get {
+            if vCurrentRound != nil {
+                return vCurrentRound
+            }
+            
             rounds.fetchRequest.predicate = NSPredicate(format: "end >= %@", NSDate())
             do {
                 try rounds.performFetch()
                 if rounds.fetchedObjects?.count > 0 {
-                    return rounds.fetchedObjects?.first as! Round!
+                    vCurrentRound = rounds.fetchedObjects?.first as! Round!
                 }
             } catch {
                 print(error)
             }
             
-            return nil
+            return vCurrentRound
+        }
+        
+        set {
+            vCurrentRound = newValue
         }
     }
+    var vCurrentRound: Round? = nil
     
     var predGamesOfCurrentRound: NSPredicate? {
         get {
@@ -54,6 +63,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             return nil
         }
+    }
+    
+    @IBAction func OnNaviPrevRoundPressed(sender: AnyObject) {
+        if let prevRound = getPrevRound(currentRound) {
+            currentRound = prevRound
+            
+            updateTable()
+        }
+        
+        updateNaviTitles()
+    }
+    
+    @IBAction func OnNaviNextRoundPressed(sender: AnyObject) {
+        if let nextRound = getNextRound(currentRound) {
+            currentRound = nextRound
+            
+            updateTable()
+        }
+        
+        updateNaviTitles()
     }
     
     override func viewDidLoad() {
@@ -68,7 +97,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return nil
         }
         
-        rounds.fetchRequest.predicate = NSPredicate(format: "end < %@", forRound!.beginDate)
+        rounds.fetchRequest.predicate = NSPredicate(format: "end < %@ AND id != %d", forRound!.beginDate, forRound!.id)
         do {
             try rounds.performFetch()
             if rounds.fetchedObjects?.count > 0 {
@@ -86,7 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return nil
         }
         
-        rounds.fetchRequest.predicate = NSPredicate(format: "begin > %@", forRound!.endDate)
+        rounds.fetchRequest.predicate = NSPredicate(format: "begin > %@ AND id != %d", forRound!.endDate, forRound!.id)
         do {
             try rounds.performFetch()
             if rounds.fetchedObjects?.count > 0 {
@@ -124,15 +153,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func OnUpdateCompleted(success: Bool) {
+        updateNaviTitles()
         updateTable()
+    }
+    
+    func updateNaviTitles() {
+        naviCurrent.title = currentRound?.name
+        naviPrev.title = getPrevRound(currentRound)?.name
+        naviFwd.title = getNextRound(currentRound)?.name
     }
     
     func updateTable(){
         updateRequests()
-        
-        naviCurrent.title = currentRound?.name
-        naviPrev.title = getPrevRound(currentRound)?.name
-        naviFwd.title = getNextRound(currentRound)?.name
 
         do{
             print("Fetching data..")
