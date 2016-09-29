@@ -1,5 +1,5 @@
 //
-//  Team+CoreDataProperties.swift
+//  Stadium+CoreDataProperties.swift
 //  wc2018
 //
 //  Created by VRS on 29/09/16.
@@ -12,15 +12,11 @@
 import Foundation
 import CoreData
 
-extension Team {
+extension Stadium {
 
     @NSManaged var id: Int32
     @NSManaged var name: String?
     @NSManaged var city: City?
-    @NSManaged var country: Country?
-    @NSManaged var goalsFrom: Goal?
-    @NSManaged var goalsTo: Goal?
-    @NSManaged var teamA: NSSet?
-    @NSManaged var teamB: NSSet?
+    @NSManaged var games: NSSet?
 
 }

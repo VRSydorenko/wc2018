@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class GameState: ManagedObjectBase {
     convenience init(){
         self.init(entity: CoreDataManager.instance.entityForName("GameState"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)

@@ -34,6 +34,8 @@ class CoreDataManager {
                 entity = object as? GameState
             case "Team":
                 entity = object as? Team
+            case "Stadium":
+                entity = object as? Stadium
             default:
                 print("ERROR!!! Unexpected entity type: \(entityName)")
             }
@@ -56,6 +58,8 @@ class CoreDataManager {
                 entity = GameState()
             case "Team":
                 entity = Team()
+            case "Stadium":
+                entity = Stadium()
             default:
                 print("ERROR!!! Unexpected entity type: \(entityName)")
             }

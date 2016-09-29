@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class City: ManagedObjectBase {
     convenience init(){
         self.init(entity: CoreDataManager.instance.entityForName("City"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)

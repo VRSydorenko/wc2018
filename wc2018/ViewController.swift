@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private let cellReuseIdentifier: String = "cellGame"
     
     private let updater = DataLoader()
-    private let games = CoreDataManager.instance.fetchedResultsController("Game", predicate: nil, sorting: "date", grouping: "group")
+    private let games = CoreDataManager.instance.fetchedResultsController("Game", predicate: nil, sorting: "date", grouping: nil/*"group"*/)
     private let rounds = CoreDataManager.instance.fetchedResultsController("Round", predicate: nil, sorting: "begin", grouping: nil)
     
     var data: NSFetchedResultsController {

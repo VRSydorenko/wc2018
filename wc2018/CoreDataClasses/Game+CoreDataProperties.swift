@@ -2,7 +2,7 @@
 //  Game+CoreDataProperties.swift
 //  wc2018
 //
-//  Created by VRS on 25/09/16.
+//  Created by VRS on 29/09/16.
 //  Copyright © 2016 Viktor Sydorenko. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,11 +16,11 @@ extension Game {
 
     @NSManaged var date: NSTimeInterval
     @NSManaged var id: Int32
-    @NSManaged var city: City?
     @NSManaged var goals: NSSet?
     @NSManaged var round: Round?
     @NSManaged var state: GameState?
     @NSManaged var teamA: Team?
     @NSManaged var teamB: Team?
+    @NSManaged var stadium: NSManagedObject?
 
 }

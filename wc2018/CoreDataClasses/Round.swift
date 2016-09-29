@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class Round: ManagedObjectBase {
     convenience init(){
         self.init(entity: CoreDataManager.instance.entityForName("Round"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)    }
