@@ -69,4 +69,5 @@ class UserSettings {
         }
     }
     
+    static let editorMode = false
 }

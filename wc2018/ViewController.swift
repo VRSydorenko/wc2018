@@ -152,6 +152,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("You tapped cell number \(indexPath.row).")
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segueToNewObject" {
+            if let vc = segue.destinationViewController as? NewObjectVC {
+                vc.newObject = Game()
+            }
+        }
+    }
+    
     func OnUpdateCompleted(success: Bool) {
         updateNaviTitles()
         updateTable()

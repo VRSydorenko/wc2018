@@ -17,6 +17,8 @@
 		7F0D08211D9DAC86009A5CD9 /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D08181D9DAC86009A5CD9 /* City+CoreDataProperties.swift */; };
 		7F0D08221D9DAC86009A5CD9 /* GameState+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0D08191D9DAC86009A5CD9 /* GameState+CoreDataProperties.swift */; };
 		7F22ADB91D8DD53300FEB8C4 /* cellGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */; };
+		7F2E1F471D9EFE1E0069DB54 /* NewObjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E1F461D9EFE1E0069DB54 /* NewObjectVC.swift */; };
+		7F2E1F491D9F04370069DB54 /* cellAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E1F481D9F04370069DB54 /* cellAttribute.swift */; };
 		7F42F8141D95C8BF009782DE /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F42F8131D95C8BF009782DE /* UserSettings.swift */; };
 		7F455C6A1D8D67E800DCECA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C691D8D67E800DCECA0 /* AppDelegate.swift */; };
 		7F455C6C1D8D67E800DCECA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C6B1D8D67E800DCECA0 /* ViewController.swift */; };
@@ -34,7 +36,6 @@
 		7F455C9C1D8D94FE00DCECA0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */; };
 		7F53A91C1D946B1F0061CCBE /* ManagedObjectBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F53A91B1D946B1F0061CCBE /* ManagedObjectBase.swift */; };
 		7F5EBC291D99A3330053BB13 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5EBC281D99A3330053BB13 /* DataLoader.swift */; };
-		7F61EBE91D932DDC00D28FAB /* wc2018.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F61EBE81D932DDC00D28FAB /* wc2018.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		7F0D08181D9DAC86009A5CD9 /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "City+CoreDataProperties.swift"; path = "CoreDataClasses/City+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F0D08191D9DAC86009A5CD9 /* GameState+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GameState+CoreDataProperties.swift"; path = "CoreDataClasses/GameState+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7F22ADB81D8DD53300FEB8C4 /* cellGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellGame.swift; sourceTree = "<group>"; };
+		7F2E1F461D9EFE1E0069DB54 /* NewObjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewObjectVC.swift; sourceTree = "<group>"; };
+		7F2E1F481D9F04370069DB54 /* cellAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cellAttribute.swift; sourceTree = "<group>"; };
 		7F42F8131D95C8BF009782DE /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		7F455C661D8D67E800DCECA0 /* wc2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wc2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F455C691D8D67E800DCECA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +70,6 @@
 		7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7F53A91B1D946B1F0061CCBE /* ManagedObjectBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ManagedObjectBase.swift; path = CoreDataClasses/ManagedObjectBase.swift; sourceTree = "<group>"; };
 		7F5EBC281D99A3330053BB13 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
-		7F61EBE81D932DDC00D28FAB /* wc2018.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = wc2018.xml; path = ../../../../Desktop/wc2018.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,6 @@
 		7F455C681D8D67E800DCECA0 /* wc2018 */ = {
 			isa = PBXGroup;
 			children = (
-				7F61EBE81D932DDC00D28FAB /* wc2018.xml */,
 				7F455C9A1D8D93CE00DCECA0 /* CoreDataClasses */,
 				7F455C691D8D67E800DCECA0 /* AppDelegate.swift */,
 				7F455C6B1D8D67E800DCECA0 /* ViewController.swift */,
@@ -113,6 +114,8 @@
 				7F455C9B1D8D94FE00DCECA0 /* CoreDataManager.swift */,
 				7F42F8131D95C8BF009782DE /* UserSettings.swift */,
 				7F5EBC281D99A3330053BB13 /* DataLoader.swift */,
+				7F2E1F461D9EFE1E0069DB54 /* NewObjectVC.swift */,
+				7F2E1F481D9F04370069DB54 /* cellAttribute.swift */,
 			);
 			path = wc2018;
 			sourceTree = "<group>";
@@ -202,7 +205,6 @@
 			files = (
 				7F455C771D8D67E900DCECA0 /* LaunchScreen.storyboard in Resources */,
 				7F455C741D8D67E900DCECA0 /* Assets.xcassets in Resources */,
-				7F61EBE91D932DDC00D28FAB /* wc2018.xml in Resources */,
 				7F455C6F1D8D67E900DCECA0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +220,7 @@
 				7F0D081F1D9DAC86009A5CD9 /* Stadium.swift in Sources */,
 				7F455C6C1D8D67E800DCECA0 /* ViewController.swift in Sources */,
 				7F455C951D8D93BE00DCECA0 /* GameState.swift in Sources */,
+				7F2E1F491D9F04370069DB54 /* cellAttribute.swift in Sources */,
 				7F0D08211D9DAC86009A5CD9 /* City+CoreDataProperties.swift in Sources */,
 				7F42F8141D95C8BF009782DE /* UserSettings.swift in Sources */,
 				7F53A91C1D946B1F0061CCBE /* ManagedObjectBase.swift in Sources */,
@@ -226,6 +229,7 @@
 				7F455C911D8D93BE00DCECA0 /* Round.swift in Sources */,
 				7F0D081E1D9DAC86009A5CD9 /* Stadium+CoreDataProperties.swift in Sources */,
 				7F22ADB91D8DD53300FEB8C4 /* cellGame.swift in Sources */,
+				7F2E1F471D9EFE1E0069DB54 /* NewObjectVC.swift in Sources */,
 				7F455C8D1D8D93BE00DCECA0 /* Game.swift in Sources */,
 				7F455C9C1D8D94FE00DCECA0 /* CoreDataManager.swift in Sources */,
 				7F455C991D8D93BE00DCECA0 /* Team.swift in Sources */,
