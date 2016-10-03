@@ -47,16 +47,33 @@ class NewObjectVC : UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellAttribute")
+        var text = ""
         
         if newObject != nil {
             if indexPath.section == 0 { // attributes
-                cell?.textLabel?.text = Array(newObject!.entity.attributesByName.keys)[indexPath.row]
+                text = Array(newObject!.entity.attributesByName.keys)[indexPath.row]
             } else if indexPath.section == 1 { // relationships
-                cell?.textLabel?.text = Array(newObject!.entity.relationshipsByName.keys)[indexPath.row]
+                text = Array(newObject!.entity.relationshipsByName.keys)[indexPath.row]
             }
         } else {
             cell?.textLabel?.text = "object is nil"
+            return cell!
         }
+        
+        cell?.textLabel?.text = text
+        
+        // color
+        var color = UIColor.redColor()
+        if let property = newObject!.entity.propertiesByName[text] {
+            if newObject!.valueForKey(text) != nil {
+                color = UIColor.greenColor()
+            }
+            
+            if property.optional {
+                color = UIColor.grayColor()
+            }
+        }
+        cell?.textLabel?.textColor = color
         
         return cell!
     }
