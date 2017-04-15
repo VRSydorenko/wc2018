@@ -9,27 +9,27 @@
 import Foundation
 
 protocol DataLoaderDelegate {
-    func OnUpdateCompleted(success: Bool)
+    func OnUpdateCompleted(_ success: Bool)
 }
 
-class DataLoader : NSObject, NSXMLParserDelegate {
+class DataLoader : NSObject, XMLParserDelegate {
     
     static let instance = DataLoader()
     
     var delegate: DataLoaderDelegate?
-    private var parser = NSXMLParser(contentsOfURL: UserSettings.dataUrl!)!
+    fileprivate var parser = XMLParser(contentsOf: UserSettings.dataUrl!)!
     
-    private var ignoreCurrentUpdate: Bool = false
-    private var currentUpdateDataVersion: Int = 0
-    private let xmlUpdateElement: String = "update"
-    private let xmlUpdateElementAttrVersion = "version"
+    fileprivate var ignoreCurrentUpdate: Bool = false
+    fileprivate var currentUpdateDataVersion: Int = 0
+    fileprivate let xmlUpdateElement: String = "update"
+    fileprivate let xmlUpdateElementAttrVersion = "version"
     
     var updateInProgress: Bool {
         get {
             return parsingInProgress
         }
     }
-    private var parsingInProgress: Bool = false
+    fileprivate var parsingInProgress: Bool = false
     
     override init(){
         super.init()
@@ -46,11 +46,11 @@ class DataLoader : NSObject, NSXMLParserDelegate {
         parser.parse()
     }
     
-    func parserDidStartDocument(parser: NSXMLParser) {
+    func parserDidStartDocument(_ parser: XMLParser) {
         print("START document")
     }
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         print("START element \"\(elementName)\"...")
         
         // an update element?
@@ -95,7 +95,7 @@ class DataLoader : NSObject, NSXMLParserDelegate {
         
         if objects.fetchedObjects!.count > 0 {
             print("Yes, the object exists")
-            anyEntity = objects.objectAtIndexPath(NSIndexPath(forItem: 0, inSection: 0))
+            anyEntity = objects.object(at: IndexPath(item: 0, section: 0))
         }
         
         CoreDataManager.instance.castOrCreate(elementName, object: anyEntity, entity: &object)
@@ -111,7 +111,7 @@ class DataLoader : NSObject, NSXMLParserDelegate {
         
     }
     
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == xmlUpdateElement {
             if !ignoreCurrentUpdate {
                 print("Updating app data version (\(UserSettings.dataVersion)) to <\(currentUpdateDataVersion)>")
@@ -123,7 +123,7 @@ class DataLoader : NSObject, NSXMLParserDelegate {
         print("END element \"\(elementName)\"...")
     }
     
-    func parserDidEndDocument(parser: NSXMLParser) {
+    func parserDidEndDocument(_ parser: XMLParser) {
         parsingInProgress = false
         print("END document")
         
@@ -131,7 +131,7 @@ class DataLoader : NSObject, NSXMLParserDelegate {
             print("Parsing succeeded!")
         } else {
             print("Parsing failed!")
-            print(parser.parserError)
+            print(parser.parserError ?? "parser_null_value")
         }
         
         delegate?.OnUpdateCompleted(parser.parserError == nil)

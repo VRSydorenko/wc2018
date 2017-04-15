@@ -11,17 +11,17 @@ import CoreData
 
 class Round: ManagedObjectBase {
     convenience init(){
-        self.init(entity: CoreDataManager.instance.entityForName("Round"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)    }
+        self.init(entity: CoreDataManager.instance.entityForName("Round"), insertInto: CoreDataManager.instance.managedObjectContext)    }
     
-    var beginDate: NSDate {
+    var beginDate: Date {
         get {
-            return NSDate.init(timeInterval: begin, sinceDate: UserSettings.dateFormatter.dateFromString("01.01.2001")!)
+            return Date.init(timeInterval: begin, since: UserSettings.dateFormatter.date(from: "01.01.2001")!)
         }
     }
     
-    var endDate: NSDate {
+    var endDate: Date {
         get {
-            return NSDate.init(timeInterval: end, sinceDate: UserSettings.dateFormatter.dateFromString("01.01.2001")!)
+            return Date.init(timeInterval: end, since: UserSettings.dateFormatter.date(from: "01.01.2001")!)
         }
     }
 }

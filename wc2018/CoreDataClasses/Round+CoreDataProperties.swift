@@ -14,8 +14,8 @@ import CoreData
 
 extension Round {
 
-    @NSManaged var begin: NSTimeInterval
-    @NSManaged var end: NSTimeInterval
+    @NSManaged var begin: TimeInterval
+    @NSManaged var end: TimeInterval
     @NSManaged var group: String?
     @NSManaged var id: Int32
     @NSManaged var name: String?

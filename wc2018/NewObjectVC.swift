@@ -17,11 +17,11 @@ class NewObjectVC : UITableViewController {
         //tableView.contentInset.top = UIApplication.sharedApplication().statusBarFrame.height
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if newObject != nil {
             if section == 0 { // attributes
                 return newObject!.entity.attributesByName.count
@@ -33,7 +33,7 @@ class NewObjectVC : UITableViewController {
         return 0
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if newObject != nil {
             if section == 0 { // attributes
                 return "Attributes"
@@ -45,8 +45,8 @@ class NewObjectVC : UITableViewController {
         return ""
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellAttribute")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellAttribute")
         var text = ""
         
         if newObject != nil {
@@ -63,14 +63,14 @@ class NewObjectVC : UITableViewController {
         cell?.textLabel?.text = text
         
         // color
-        var color = UIColor.redColor()
+        var color = UIColor.red
         if let property = newObject!.entity.propertiesByName[text] {
-            if newObject!.valueForKey(text) != nil {
-                color = UIColor.greenColor()
+            if newObject!.value(forKey: text) != nil {
+                color = UIColor.green
             }
             
-            if property.optional {
-                color = UIColor.grayColor()
+            if property.isOptional {
+                color = UIColor.gray
             }
         }
         cell?.textLabel?.textColor = color
@@ -78,6 +78,6 @@ class NewObjectVC : UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }

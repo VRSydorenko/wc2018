@@ -11,6 +11,6 @@ import CoreData
 
 class Game: ManagedObjectBase {
     convenience init(){
-        self.init(entity: CoreDataManager.instance.entityForName("Game"), insertIntoManagedObjectContext: CoreDataManager.instance.managedObjectContext)
+        self.init(entity: CoreDataManager.instance.entityForName("Game"), insertInto: CoreDataManager.instance.managedObjectContext)
     }
 }

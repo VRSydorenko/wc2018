@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 
 class ManagedObjectBase : NSManagedObject{
-    func setValuesFromDictionary(dict: [String : String]){
+    func setValuesFromDictionary(_ dict: [String : String]){
         for (key, value) in dict {
             self.setValueForKey(value, forKey: key)
         }
     }
     
-    func setValueForKey(value: String, forKey key: String) {
+    func setValueForKey(_ value: String, forKey key: String) {
         switch key {
         case "id":
             if let id = Int(value) {
@@ -26,7 +26,7 @@ class ManagedObjectBase : NSManagedObject{
                 print("Error casting <\(value)> to Int [id]!")
             }
         case "date", "begin", "end":
-            if let date = UserSettings.dateFormatter.dateFromString(value) {
+            if let date = UserSettings.dateFormatter.date(from: value) {
                 super.setValue((date as AnyObject), forKey: key)
                 print("Setting \(key) to <\(date)>")
             } else {

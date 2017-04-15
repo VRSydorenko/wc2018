@@ -14,7 +14,7 @@ import CoreData
 
 extension Game {
 
-    @NSManaged var date: NSTimeInterval
+    @NSManaged var date: TimeInterval
     @NSManaged var id: Int32
     @NSManaged var goals: NSSet?
     @NSManaged var round: Round?
